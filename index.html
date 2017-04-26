@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="jquery-2.1.1.min.js" charset="utf-8"></script>
+  <script src="rotate.js" charset="utf-8"></script>
+  <style>
+  .box{background:#f2f2f2;border:1px solid #d5d7d9;width:100%;margin:0 auto;box-sizing: border-box;}
+  .box .img{width:150px;height:150px;margin:0 auto;border:1px solid #ccc;background:#333;transform:rotate(0deg);line-height: 150px;text-align:center;color:#fff;}
+  .box .control{position: absolute;bottom:0;left:0;right:0;width:270px;margin:0 auto;}
+  .box p{display: inline-block;width:60px;height: 30px;text-align: center;line-height: 30px;color:#666;border:1px solid #ccc;margin:10px;cursor: pointer;}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="img">标记</div>
+    <div class="control">
+      <p class="changeBig">放大</p>
+      <p class="changeSmall">缩小</p>
+      <p class="rotate">旋转</p>
+    </div>
+  </div>
+  <script type="text/javascript">
+      $(function(){
+        var windowH=$(window).height();
+        $(".box").height(windowH);
+
+
+        //插件说明  $.enlarge是放大的功能  $.narrow是缩小的功能
+        $(".changeBig").click(function(){//参数分别表示的是 每次递增的倍数、最大倍数、需要放大的jquery对象   例如$(".img")
+          $(".img").enlarge(0.25,3);
+        })
+        $(".changeSmall").click(function(){
+          $(".img").narrow(0.25,0.25);//参数分别表示的是 每次递减的倍数、最大倍数、需要缩小的jquery对象   例如$(".img")
+        })
+        $(".rotate").click(function(){
+          $(".img").rotate(90,360);//参数分别表示的是 每次旋转的角度、最大角度、需要旋转的jquery对象   例如$(".img")
+        })
+      })
+
+  </script>
+</body>
+</html>
